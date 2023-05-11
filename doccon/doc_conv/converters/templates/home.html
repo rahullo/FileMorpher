@@ -1,0 +1,81 @@
+{% extends "master.html" %}
+
+{% load static %}
+
+    {% block title %}
+        DocConverter
+    {% endblock %}
+    {% block content-section %}
+
+        <div class="content-section">
+            <a href="docTopdf">
+                <div href="https://www.linkedin.com/in/rahul-lohra/" class="card rotate-in-2-ccw">
+                    <img src="../static/img/pdf.svg">
+                    <div class="container">
+                        <h4><b>DOC to PDF</b></h4>
+                        <p>Convert doc to a pdf format</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="pdfTodoc">
+                <div class="card rotate-in-2-ccw">
+                    <img src="../static/img/doc.svg" alt="Avatar">
+                    <div class="container">
+                        <h4><b>PDF to DOC</b></h4>
+                        <p>Convert pdf to a doc format</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="jpgtopdf">
+                <div class="card rotate-in-2-ccw">
+                    <img src="../static/img/pdf.svg" alt="Avatar">
+                    <div class="container">
+                        <h4><b>JPG to PDF</b></h4>
+                        <p>Convert jpg to a pdf format</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="pdftojpg">
+                <div class="card rotate-in-2-ccw">
+                    <img src="../static/img/jpg.svg" alt="Avatar">
+                    <div class="container">
+                        <h4><b>PDF to JPG</b></h4>
+                        <p>Convert pdf to a jpg format</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="foo">
+            <section>
+                <footer class="top">
+                <img src="../static/img/footer_logo.png" />
+                <div class="links">
+                    <div>
+                    <h2>Rahul Lohra</h2>
+                    <a href="https://www.linkedin.com/in/rahul-lohra/">LinkedIn</a>
+                    <a href="https://github.com/rahullo">Github</a>
+                    <a href="https://leetcode.com/RahulLohra/">LeetCode</a>
+                    <a href="../static/docs/Resume.pdf">Resume</a>
+                    </div>
+                </div>
+                </footer>
+                <footer class="bottom">
+                <div class="legal">
+                    <span> © 2023 All rights reserved </span>
+                    <a> License </a>
+                    <a> Terms </a>
+                    <a> Privacy </a>
+                </div>
+                <div class="links">
+                    <a class="fa-brands fa-github"></a>
+                    <a class="fa-brands fa-linkedin"></a>
+                    <a class="fa-brands fa-docker"></a>
+                </div>
+                </footer>
+            </section>
+        </div> 
+
+    {% endblock%}

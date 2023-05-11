@@ -1,0 +1,32 @@
+.image-upload > input {
+    display: none;
+}
+
+.image-upload img {
+    width: 100px;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.buttons{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.upload-btn {
+    background-color: #C3073F;
+    left: 50%;
+    margin-top: 3rem;
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.download-btn {
+    background-color: rgb(84, 104, 192);
+
+}

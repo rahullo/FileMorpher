@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> {% endcomment %}
+
+        <link rel="stylesheet" href="{% static 'css/index.style.css' %}">
+        <link rel="stylesheet" href="../static/css/upload-style.css">
+        <link rel="stylesheet" href="../static/css/file-preview.css">
+        <link rel="stylesheet" href="../static/css/index.style.css">
+        <title>{% block title %}{% endblock %}</title>
+</head>
+<body style=" font-family: 'Playfair'">
+    <div class="navigation-section">
+        <nav class="nav-bar">
+            <div class="logo">
+                <a href="/home" style="color: black; text-decoration: none; font-family: 'Foldit'"><h1>RAHUL LOHRA</h1></a>
+            </div>
+            <div class="navs">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class=" active"><a class="nav-link_1" aria-current="page" href="#">Home</a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button><a class="nav-link_3" href="#">WaterMark</a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button><a class="nav-link_4" href="#">Try Others</a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button><a class="nav-link_2" aria-current="page" href="#">Sign Up</a></button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mail"><a class="nav-link_5" href="#">Login</a></button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    {% block content-section %}
+
+    {% endblock %}
+   
+</body>
+</html>
