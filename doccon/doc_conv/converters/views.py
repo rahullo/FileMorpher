@@ -81,7 +81,6 @@ def jpgTopdf(request):
     if request.method == "POST":
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/jpg2pdf/', str(res))
-        print("🙋‍♂️🙋‍♂️🙋‍♂️🙋‍♂️", path_to_upload)
         os.makedirs(path_to_upload)
         files = request.FILES
         print(request.FILES)
