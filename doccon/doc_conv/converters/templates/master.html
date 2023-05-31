@@ -23,24 +23,24 @@
     <div class="navigation-section">
         <nav class="nav-bar">
             <div class="logo">
-                <a href="/home" style="color: black; text-decoration: none; font-family: 'Foldit'"><h1>RAHUL LOHRA</h1></a>
+                <a href="/fileMorpher" style="color: black; text-decoration: none; font-family: 'Foldit'"><img src="../static/img/logo.svg" class="responsive" style="width: 10rem; height: 4rem;"></a>
             </div>
             <div class="navs">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <button class=" active"><a class="nav-link_1" aria-current="page" href="#">Home</a></button>
+                        <a class="nav-link_1" aria-current="page" href="#"><button id="button-1" class=" active">Home</button></a>
                     </li>
                     <li class="nav-item">
-                        <button><a class="nav-link_3" href="#">WaterMark</a></button>
+                        <a class="nav-link_2" href="#"><button id="button-2">WaterMark</button></a>
                     </li>
                     <li class="nav-item">
-                        <button><a class="nav-link_4" href="#">Try Others</a></button>
+                        <a class="nav-link_3" href="#"><button id="button-3">Try Others</button></a>
                     </li>
                     <li class="nav-item">
-                        <button><a class="nav-link_2" aria-current="page" href="#">Sign Up</a></button>
+                        <a class="nav-link_4" aria-current="page" href="#"><button id="button-4">Sign Up</button></a>
                     </li>
                     <li class="nav-item">
-                        <button class="mail"><a class="nav-link_5" href="#">Login</a></button>
+                        <a class="nav-link_5" href="#"><button id="button-5" class="login-btn">Login</button></a>
                     </li>
                 </ul>
             </div>
@@ -50,6 +50,46 @@
     {% block content-section %}
 
     {% endblock %}
+
+    <div class="foo">
+        <section>
+            <footer class="top">
+            <div class="links">
+                <div>
+                <h2>Rahul Lohra</h2>
+                <a href="https://www.linkedin.com/in/rahul-lohra/">LinkedIn</a>
+                <a href="https://github.com/rahullo">Github</a>
+                <a href="https://leetcode.com/RahulLohra/">LeetCode</a>
+                <a href="../static/docs/Resume.pdf">Resume</a>
+                </div>
+            </div>
+            </footer>
+            <footer class="bottom">
+            <div class="legal">
+                <span> © 2023 All rights reserved </span>
+                <a> License </a>
+                <a> Terms </a>
+                <a> Privacy </a>
+            </div>
+            <div class="links">
+                <a class="fa-brands fa-github"></a>
+                <a class="fa-brands fa-linkedin"></a>
+                <a class="fa-brands fa-docker"></a>
+            </div>
+            </footer>
+        </section>
+    </div>
+
+    <script src="../static/js/file-upload.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
    
 </body>
 </html>

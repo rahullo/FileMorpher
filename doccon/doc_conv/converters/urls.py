@@ -2,9 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
-    path('home/docTopdf', views.docTopdf, name='docTopdf'),
-    path('home/pdfTodoc', views.pdfTodoc, name='pdfTodoc'),
-    path('home/jpgtopdf', views.jpgTopdf, name='jpgTopdf'),
-    path('home/pdftojpg', views.pdfTojpg, name='pdfTojpg'),
+    path('fileMorpher/', views.home, name='home'),
+    path('fileMorpher/docTopdf', views.docTopdf, name='docTopdf'),
+    path('fileMorpher/pdfTodoc', views.pdfTodoc, name='pdfTodoc'),
+    path('fileMorpher/jpgtopdf', views.jpgTopdf, name='jpgTopdf'),
+    path('fileMorpher/pdftojpg', views.pdfTojpg, name='pdfTojpg'),
 ]

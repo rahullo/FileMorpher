@@ -10,6 +10,11 @@
     color: black;
 }
 
+.responsive {
+    width: 100%;
+    height: auto;
+  }
+
 @media only screen and (max-width: 500px){
     nav {
         width: 100%;
@@ -27,8 +32,11 @@
         justify-content: space-around;
         align-items: center;
     }
-    .logo h1 {
-        font-size: .6rem;
+    .logo img {
+        background-image: url('../img/logo.svg');
+        background-size: 5rem 3rem;
+        /* width: 5rem;
+        height: 3rem; */
     }
     .navs {
         position: relative;
@@ -82,7 +90,7 @@
         display: grid;
         align-items: center;
         justify-content: space-around;
-        background-image: url('../img/bgIMG.jpg');
+        /* background-image: url('../img/bgIMG.jpg'); */
         background-size: 100% 65rem;
         background-repeat: no-repeat;
 
@@ -206,7 +214,7 @@
         background-color: rgba(0,0,0,0.2);
     }
     
-    .mail {
+    .login-btn {
         border: 2px solid black;
     }
     button a {
@@ -229,7 +237,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        background-image: url('../img/bgIMG.jpg');
+        /* background-image: url('../img/bgIMG.jpg'); */
         background-size: 100% 78rem;
         background-repeat: no-repeat;
     }
@@ -340,23 +348,23 @@
         border-radius: 1.5rem;
         cursor: pointer;
         background-color: #5CDB95;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: black;
     }
     button:hover {
         transform: scale(1.1);
         transition: all .4s;
     }
     .active {
-        color: #EE4C7C;
+        /* color: #EE4C7C; */
         background-color: rgba(0,0,0,0.2);
     }
-    .mail {
+    .login-btn {
         border: 2px solid black;
     }
-    button a {
+    .nav-item a {
         text-decoration: none;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: black;
     }
     li {
         list-style: none;
@@ -371,7 +379,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        background-image: url('../img/bgIMG.jpg');
+        /* background-image: url('../img/bgIMG.jpg'); */
         background-size: 100% 38rem;
         background-repeat: no-repeat;
     }
@@ -451,7 +459,7 @@
     width: 100%;
     background: #172940;
     padding-top: 30px;
-    
+    margin-top: 10rem;
   }
   
   footer {
@@ -568,3 +576,4 @@
     text-decoration: none;
     color: #a2b5cd;
   }
+

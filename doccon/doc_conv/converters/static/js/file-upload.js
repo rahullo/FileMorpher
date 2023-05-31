@@ -62,4 +62,24 @@ function handleFileSelect(event) {
     }
 }
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+// document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+// let nav_button_1 = document.getElementById('button-1')
+// let nav_button_2 = document.getElementById('button-2')
+// let nav_button_3 = document.getElementById('button-3')
+// let nav_button_4 = document.getElementById('button-4')
+// let nav_button_5 = document.getElementById('button-5')
+
+
+
+// document.querySelector('.navbar-nav').addEventListener('click', function(event) {
+//     event.preventDefault();
+
+//     let active_btn = document.querySelector('.active')
+
+//     if (!event.target.classList.contains('active')) {
+//         active_btn.classList.remove('active')
+//         event.target.classList.add('active')
+//     }
+// })

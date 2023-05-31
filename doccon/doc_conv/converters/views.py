@@ -4,10 +4,10 @@ from django.template import loader
 from flask import Flask, request, redirect, url_for
 app = Flask(__name__)
 
-from docx2pdf import convert
 
 import pythoncom
 
+from pdf2docx import Converter
 from docx2pdf import convert
 import img2pdf
 from pdf2image import convert_from_path, convert_from_bytes
@@ -33,7 +33,9 @@ def home(request):
 def docTopdf(request):
     pythoncom.CoInitialize()
 
+    print(request.method)
     if request.method == 'POST':
+        print("I am in...")
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/doc2pdf', str(res))
         os.makedirs(path_to_upload)
@@ -44,19 +46,9 @@ def docTopdf(request):
                     f.write(chunk)
 
         convert(path_to_upload+'/sample.docx')
-        
-        # if file:
-        #     with open(path_to_upload + "/sample.pdf", "wb") as f:
-        #         print("🎇🎇🎇")
-        #         f.write(docx2pdf.convert(file))
-        
-        # os.rename(path_to_upload + "/sample.pdf")
-        # return render(request, 'doctopdf.html')
 
         return render(request, 'doctopdf.html', {'url': str(res)})
-        # return HttpResponse(template.render())
     return render(request, 'doctopdf.html')
-    # return HttpResponse(template.render())
 
 
 
@@ -65,16 +57,28 @@ def docTopdf(request):
 def pdfTodoc(request):
     pythoncom.CoInitialize()
 
+    if request.method == 'POST':
+        res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
+        path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2doc', str(res))
+        os.makedirs(path_to_upload)
+        files = request.FILES
+        for file in files.getlist('files'):
+            with open(path_to_upload + '/sample.pdf', 'wb+') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
 
-    template = loader.get_template('pdftodoc.html')
+        cv = Converter(path_to_upload+'/sample.pdf')
+        cv.convert(path_to_upload+'/sample.docx', start=0, end=None)
+        cv.close()
 
-    return HttpResponse(template.render())
+        return render(request, 'pdftodoc.html', {'url': str(res)})
+    return render(request, 'pdftodoc.html')
+
 
 def jpgTopdf(request):
     pythoncom.CoInitialize()
 
     if request.method == "POST":
-        # creating random folder name for each user
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/jpg2pdf/', str(res))
         print("🙋‍♂️🙋‍♂️🙋‍♂️🙋‍♂️", path_to_upload)
@@ -101,7 +105,6 @@ def pdfTojpg(request):
 
 
     if request.method == "POST":
-        # creating random folder name for each user
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2jpg', str(res))
         os.makedirs(path_to_upload)

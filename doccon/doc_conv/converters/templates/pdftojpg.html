@@ -11,7 +11,7 @@
 {% block content-section%}
 <div>
     <br/>
-    <H1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow'; color: black">Convert your pdf into a image</H1>
+    <H1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow'; color: white;">Convert your pdf into a image</H1>
     <br/>
 </div>
 
@@ -19,7 +19,7 @@
     <form method="post" action="./pdftojpg" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
-            <h5 style="text-align: center">Click on icon to upload files</h5>
+            <h5 style="text-align: center; color: white;">Click on icon to upload files</h5>
         </div>
         <div class="image-upload">
             <label for="files">
@@ -37,7 +37,7 @@
         </div>
         <div class="buttons">
             <button id="uploadbutton" type="submit"
-                    class="btn upload-btn" style="margin-left: 30%;" disabled>Upload
+                    class="btn upload-btn" style="margin-left: 30%;" disabled>Convert
             </button>
         </div>
         </br>
@@ -49,7 +49,7 @@
 {% if url %}
     <h5 style="text-align: center">Ready to Download.</h5>
     </br>
-    <a style="margin:0 auto;display: block; width: 100px color: black" type="button" class="btn download-btn" href="../static/uploaded_files/jpg2pdf/{{ url }}/sample.pdf" download="output.txt">Download</a>
+    <a type="button" class="btn buttonDownload" href="../static/uploaded_files/jpg2pdf/{{ url }}/sample.pdf" download="output.txt">Download</a>
 {% endif %}
 
 <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite"></div>
