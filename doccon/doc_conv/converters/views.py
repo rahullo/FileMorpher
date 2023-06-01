@@ -33,7 +33,6 @@ def home(request):
 def docTopdf(request):
     pythoncom.CoInitialize()
 
-    print
     if request.method == 'POST':
         print("I am in...")
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
@@ -81,10 +80,8 @@ def jpgTopdf(request):
     if request.method == "POST":
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/jpg2pdf/', str(res))
-        print("🙋‍♂️🙋‍♂️🙋‍♂️🙋‍♂️", path_to_upload)
         os.makedirs(path_to_upload)
         files = request.FILES
-        print(request.FILES)
         files_list = []
         for file in files.getlist('files'):
             files_list.append(file)
@@ -100,32 +97,54 @@ def jpgTopdf(request):
 
 
 
+# def pdfTojpg(request):
+#     pythoncom.CoInitialize()
+
+
+#     if request.method == "POST":
+#         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
+#         path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2jpg', str(res))
+#         os.makedirs(path_to_upload)
+#         files = request.FILES
+#         for file in files.getlist('files'):
+#             with open(path_to_upload + '/sample.pdf', 'wb+') as f:
+#                 for chunk in file.chunks():
+#                     f.write(chunk)
+
+#         images = convert_from_path(path_to_upload + '/sample.pdf', 500)
+
+#         zipObj = ZipFile(path_to_upload + '/sample.zip', 'w')
+ 
+#         for image in images:
+#             image.save("/page%d.jpg" % (images.index(image)), "JPEG")
+#             zipObj.write("/page%d.jpg" % (images.index(image)))
+#             os.remove("/page%d.jpg" % (images.index(image)))
+
+#         zipObj.close()
+#         os.remove(path_to_upload + "/sample.pdf")
+#         os.rename(path_to_upload + "/sample.zip", path_to_upload + "/sample.txt")
+#         return render(request, 'pdftojpg.html', {'url': str(res)})
+#     return render(request, 'pdftojpg.html')
+
 def pdfTojpg(request):
     pythoncom.CoInitialize()
-
 
     if request.method == "POST":
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2jpg', str(res))
         os.makedirs(path_to_upload)
         files = request.FILES
+        files_list = []
         for file in files.getlist('files'):
             with open(path_to_upload + '/sample.pdf', 'wb+') as f:
                 for chunk in file.chunks():
                     f.write(chunk)
 
-        images = convert_from_path(path_to_upload + '/sample.pdf', 500)
+        images = convert_from_path(path_to_upload+'/sample.pdf', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
+        
+        for count, image in enumerate(images):
+            image.save('sample.jpg', 'JPEG')
 
-        zipObj = ZipFile(path_to_upload + '/sample.zip', 'w')
- 
-        for image in images:
-            image.save("/page%d.jpg" % (images.index(image)), "JPEG")
-            zipObj.write("/page%d.jpg" % (images.index(image)))
-            os.remove("/page%d.jpg" % (images.index(image)))
-
-        zipObj.close()
-        os.remove(path_to_upload + "/sample.pdf")
-        os.rename(path_to_upload + "/sample.zip", path_to_upload + "/sample.txt")
         return render(request, 'pdftojpg.html', {'url': str(res)})
     return render(request, 'pdftojpg.html')
 
