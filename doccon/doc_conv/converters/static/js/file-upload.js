@@ -1,12 +1,4 @@
-// document.getElementById('file-input').addEventListener("change", function () {
-//     document.getElementById('filecount')
-// });
-
-
-document.getElementById('uploadbutton').addEventListener('click', function(event) {
-    console.log("convert button clicked");
-})
-
+'use strict'
 
 document.querySelector('.navbar-nav').addEventListener('click', function(event) {
     event.preventDefault();
@@ -18,36 +10,6 @@ document.querySelector('.navbar-nav').addEventListener('click', function(event) 
         event.target.classList.add('active')
     }
 })
-
-function deleteFolder() {
-    // Get the folder name from the button.
-    var folderName = this.getAttribute('data-folder-name');
-    console.log("dedkjfkadsj");
-    // Make a POST request to the delete_folder view.
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/delete_folder', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-      folder_name: folderName
-    }));
-  
-    // Handle the response.
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        // The folder was deleted successfully.
-        alert('Folder deleted successfully.');
-      } else {
-        // An error occurred.
-        alert('Error deleting folder.');
-      }
-    };
-  }
-
-// deleteF.addEventListener('click', function(event) {
-//     event.preventDefault();
-//     console.log("Delete Button clicked");
-// })
-
 
 function handleFileSelect(event) {
     //Check File API support
@@ -69,21 +31,6 @@ function handleFileSelect(event) {
             document.getElementById('filename').innerHTML = files[0].name;
         }
 
-
-        // for (var i = 0; i < files.length; i++) {
-        //     output.classList.remove('quote-imgs-thumbs--hidden')
-        //     var file = files[i];
-        //
-        //     var picReader = new FileReader();
-        //     picReader.addEventListener("load", function (event) {
-        //         var picFile = event.target;
-        //         var div = document.createElement("div");
-        //         div.innerHTML = "<img class='img-preview-thumb' src='" + picFile.result + "'" + "title='" + file.name + "'/>";
-        //         output.insertBefore(div, null);
-        //     });
-        //     //Read the image
-        //     picReader.readAsDataURL(file);
-        // }
         if (!!files) {
 
             if (typeof(output) != 'undefined' && output != null) {
@@ -108,7 +55,3 @@ function handleFileSelect(event) {
 }
 
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-
-
-
