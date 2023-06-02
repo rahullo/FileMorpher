@@ -2,6 +2,12 @@
 //     document.getElementById('filecount')
 // });
 
+
+document.getElementById('uploadbutton').addEventListener('click', function(event) {
+    console.log("convert button clicked");
+})
+
+
 document.querySelector('.navbar-nav').addEventListener('click', function(event) {
     event.preventDefault();
     console.log("CLicked")
@@ -12,6 +18,35 @@ document.querySelector('.navbar-nav').addEventListener('click', function(event) 
         event.target.classList.add('active')
     }
 })
+
+function deleteFolder() {
+    // Get the folder name from the button.
+    var folderName = this.getAttribute('data-folder-name');
+    console.log("dedkjfkadsj");
+    // Make a POST request to the delete_folder view.
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/delete_folder', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      folder_name: folderName
+    }));
+  
+    // Handle the response.
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // The folder was deleted successfully.
+        alert('Folder deleted successfully.');
+      } else {
+        // An error occurred.
+        alert('Error deleting folder.');
+      }
+    };
+  }
+
+// deleteF.addEventListener('click', function(event) {
+//     event.preventDefault();
+//     console.log("Delete Button clicked");
+// })
 
 
 function handleFileSelect(event) {

@@ -4,6 +4,10 @@ from django.template import loader
 from flask import Flask, request, redirect, url_for
 app = Flask(__name__)
 
+from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
+from django.core.files.storage import FileSystemStorage
+
 
 import pythoncom
 
@@ -19,16 +23,38 @@ import os
 from zipfile import ZipFile
 import re
 
+import time
+from threading import Timer
+
 
 import docx2pdf
 
 # Create your views here.
+
+path = '123'
 
 def home(request):
     template = loader.get_template('home.html')
 
     return HttpResponse(template.render())
 
+def my_function(*arg1):
+    print("The timer has fired!")
+    print(type(arg1[0]))
+    os.remove(arg1[0]+'/sample.jpg')
+
+
+@require_POST
+def delete_folder(request):
+    # Get the name of the folder to delete.
+    folder_name = request.POST['folder_name']
+    print("💥💥💥💥",folder_name)
+    # Delete the folder.
+    storage = FileSystemStorage()
+    storage.delete(folder_name)
+
+    # Redirect to the home page.
+    return redirect('home')
 
 def docTopdf(request):
     pythoncom.CoInitialize()
@@ -103,9 +129,6 @@ def jpgTopdf(request):
 
 
 
-
-
-
 def pdfTojpg(request):
     pythoncom.CoInitialize()
 
@@ -126,6 +149,9 @@ def pdfTojpg(request):
 
         os.remove(path_to_upload+'/sample.pdf')
 
+        
+        timer = Timer(10, my_function, {path_to_upload: "hello" })
+        timer.start()
         return render(request, 'pdftojpg.html', {'url': str(res)})
         
     return render(request, 'pdftojpg.html')
