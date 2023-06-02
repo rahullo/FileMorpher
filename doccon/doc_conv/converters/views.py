@@ -142,10 +142,14 @@ def pdfTojpg(request):
 
         images = convert_from_path(path_to_upload+'/sample.pdf', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
         
-        for count, image in enumerate(images):
-            print(image)
-            image.save('sample.jpg', 'JPEG')
+        for i in range(len(images)):
+            
+            # images[i].save(r'C:\Users\hp\Desktop\DJANGO\FileMorpher\doccon\doc_conv\converters\static\uploaded_files\pdf2jpg\{str}}\sample.jpg', 'JPEG')
+            images[i].save(path_to_upload+'/sample.jpg', 'JPEG')
+
+        os.remove(path_to_upload+'/sample.pdf')
 
         return render(request, 'pdftojpg.html', {'url': str(res)})
+        
     return render(request, 'pdftojpg.html')
 
