@@ -34,7 +34,6 @@ def docTopdf(request):
     pythoncom.CoInitialize()
 
     if request.method == 'POST':
-        print("I am in...")
         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
         path_to_upload = os.path.join('./converters/static/uploaded_files/doc2pdf', str(res))
         os.makedirs(path_to_upload)
@@ -45,6 +44,8 @@ def docTopdf(request):
                     f.write(chunk)
 
         convert(path_to_upload+'/sample.docx')
+
+        os.remove(path_to_upload+'/sample.docx')
 
         return render(request, 'doctopdf.html', {'url': str(res)})
     return render(request, 'doctopdf.html')
@@ -70,6 +71,9 @@ def pdfTodoc(request):
         cv.convert(path_to_upload+'/sample.docx', start=0, end=None)
         cv.close()
 
+        os.remove(path_to_upload+'/sample.pdf')
+
+
         return render(request, 'pdftodoc.html', {'url': str(res)})
     return render(request, 'pdftodoc.html')
 
@@ -90,41 +94,17 @@ def jpgTopdf(request):
         layout_fun = img2pdf.get_layout_fun(a4inpt)
         with open(path_to_upload + "/sample.pdf", "wb") as f:
             f.write(img2pdf.convert(files_list, layout_fun=layout_fun))
-        # os.rename(path_to_upload + "/sample.pdf", path_to_upload + "/sample.pdf")
+
+        os.remove(path_to_upload+'/sample.jpg')
+        
         return render(request, 'jpgtopdf.html', {'url': str(res)})
+    
     return render(request, 'jpgtopdf.html')
 
 
 
 
-# def pdfTojpg(request):
-#     pythoncom.CoInitialize()
 
-
-#     if request.method == "POST":
-#         res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
-#         path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2jpg', str(res))
-#         os.makedirs(path_to_upload)
-#         files = request.FILES
-#         for file in files.getlist('files'):
-#             with open(path_to_upload + '/sample.pdf', 'wb+') as f:
-#                 for chunk in file.chunks():
-#                     f.write(chunk)
-
-#         images = convert_from_path(path_to_upload + '/sample.pdf', 500)
-
-#         zipObj = ZipFile(path_to_upload + '/sample.zip', 'w')
- 
-#         for image in images:
-#             image.save("/page%d.jpg" % (images.index(image)), "JPEG")
-#             zipObj.write("/page%d.jpg" % (images.index(image)))
-#             os.remove("/page%d.jpg" % (images.index(image)))
-
-#         zipObj.close()
-#         os.remove(path_to_upload + "/sample.pdf")
-#         os.rename(path_to_upload + "/sample.zip", path_to_upload + "/sample.txt")
-#         return render(request, 'pdftojpg.html', {'url': str(res)})
-#     return render(request, 'pdftojpg.html')
 
 def pdfTojpg(request):
     pythoncom.CoInitialize()
@@ -134,7 +114,6 @@ def pdfTojpg(request):
         path_to_upload = os.path.join('./converters/static/uploaded_files/pdf2jpg', str(res))
         os.makedirs(path_to_upload)
         files = request.FILES
-        files_list = []
         for file in files.getlist('files'):
             with open(path_to_upload + '/sample.pdf', 'wb+') as f:
                 for chunk in file.chunks():
@@ -143,8 +122,6 @@ def pdfTojpg(request):
         images = convert_from_path(path_to_upload+'/sample.pdf', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
         
         for i in range(len(images)):
-            
-            # images[i].save(r'C:\Users\hp\Desktop\DJANGO\FileMorpher\doccon\doc_conv\converters\static\uploaded_files\pdf2jpg\{str}}\sample.jpg', 'JPEG')
             images[i].save(path_to_upload+'/sample.jpg', 'JPEG')
 
         os.remove(path_to_upload+'/sample.pdf')
