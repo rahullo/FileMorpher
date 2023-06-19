@@ -1,7 +1,6 @@
 'use strict'
 
 document.querySelector('.navbar-nav').addEventListener('click', function(event) {
-    event.preventDefault();
     console.log("CLicked")
     let active_btn = document.querySelector('.active')
 
