@@ -121,7 +121,7 @@ def jpgTopdf(request):
     return render(request, 'jpgtopdf.html')
 
 
-
+#Convert pdf to jpg
 def pdfTojpg(request):
     pythoncom.CoInitialize()
 
