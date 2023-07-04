@@ -94,7 +94,7 @@ def pdfTodoc(request):
         return render(request, 'pdftodoc.html', {'url': str(res)})
     return render(request, 'pdftodoc.html')
 
-
+#Convert JPG to PDF
 def jpgTopdf(request):
     pythoncom.CoInitialize()
 
