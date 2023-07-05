@@ -81,8 +81,8 @@ To install and run the project locally, follow these steps:
 The project follows the standard structure of a Django application. Here is a brief overview of the main directories and files:
 
 - **`manage.py`**: The Django project management script.
-- **`document_conversion`**: The Django project directory.
-  - **`document_conversion/settings.py`**: Project settings file.
+- **`FileMopher`**: The Django project directory.
+  - **`FileMopher/settings.py`**: Project settings file.
   - **`document_conversion/urls.py`**: URL configuration file.
   - **`document_conversion/wsgi.py`**: WSGI application entry point.
 - **`document_converter`**: The main Django app directory.
