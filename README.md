@@ -83,9 +83,9 @@ The project follows the standard structure of a Django application. Here is a br
 - **`manage.py`**: The Django project management script.
 - **`FileMopher`**: The Django project directory.
   - **`FileMopher/settings.py`**: Project settings file.
-  - **`document_conversion/urls.py`**: URL configuration file.
-  - **`document_conversion/wsgi.py`**: WSGI application entry point.
-- **`document_converter`**: The main Django app directory.
+  - **`FileMopher/urls.py`**: URL configuration file.
+  - **`FileMopher/wsgi.py`**: WSGI application entry point.
+- **`FileMopher`**: The main Django app directory.
   - **`migrations`**: Database migration files.
   - **`static`**: Static files (CSS, JavaScript, etc.).
   - **`templates`**: HTML templates for the user interface.
