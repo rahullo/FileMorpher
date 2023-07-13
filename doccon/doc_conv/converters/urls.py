@@ -8,4 +8,5 @@ urlpatterns = [
     path('fileMorpher/jpgtopdf', views.jpgTopdf, name='jpgTopdf'),
     path('fileMorpher/pdftojpg', views.pdfTojpg, name='pdfTojpg'),
     path('fileMorpher/watermark', views.watermark, name='watermark'),
+    path('fileMorpher/bgremover', views.bgremover, name='bgremover')
 ]

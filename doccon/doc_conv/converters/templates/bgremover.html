@@ -1,0 +1,72 @@
+{% extends "master.html"%}
+
+{% load static %}
+
+
+{%block title%}
+    BGRemove
+{%endblock%}
+
+{% block content-section%}
+<div>
+    <br/>
+    <H1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow'; color: white">Remove Background From Your IMAGE</H1>
+    <br/>
+</div>
+
+<div>
+    <form method="post" action="./bgremover" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <h5 style="text-align: center; color: white">Click on icon to upload files</h5>
+        </div>
+        <div class="image-upload">
+            <label for="files">
+                <img src='../static/img/upload.svg'/>
+            </label>
+
+            <input id="files" type="file" name="files" accept="application" multiple hidden/>
+        </div>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div>
+            <h5 id="filecount" style="text-align: center"></h5>
+        </div>
+        <div class="buttons" style="margin-bottom: 5rem;">
+            <button id="uploadbutton" type="submit"
+                    class="btn upload-btn" style="margin-left: 30%;" disabled>Remove
+            </button>
+        </div>
+        </br>
+        </br>
+
+    </form>
+</div>
+</br>
+{% if url %}
+    <h5 style="text-align: center;">Ready to Download.</h5>
+    </br>
+    <a type="button" class="btn buttonDownload" href="../static/uploaded_files/bgremover/{{ url }}/sample.jpg" download="output.pdf">Download</a>
+{% endif %}
+
+<div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite"></div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../static/js/file-upload.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+{% endblock%}

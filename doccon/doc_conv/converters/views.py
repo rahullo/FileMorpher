@@ -151,6 +151,35 @@ def pdfTojpg(request):
     return render(request, 'pdftojpg.html')
 
 
+#Remove your background from your image
+def bgremover(request):
+    pythoncom.CoInitialize()
+
+    # if request.method == "POST":
+    #     res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
+    #     path_to_upload = os.path.join('./converters/static/uploaded_files/bgremover', str(res))
+    #     os.makedirs(path_to_upload)
+    #     files = request.FILES
+    #     for file in files.getlist('files'):
+    #         with open(path_to_upload + '/sample.pdf', 'wb+') as f:
+    #             for chunk in file.chunks():
+    #                 f.write(chunk)
+
+    #     images = convert_from_path(path_to_upload+'/sample.pdf', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
+        
+    #     for i in range(len(images)):
+    #         images[i].save(path_to_upload+'/sample.jpg', 'JPEG')
+
+    #     os.remove(path_to_upload+'/sample.pdf')
+
+        
+    #     timer = Timer(25, my_function, {path_to_upload+'/sample.jpg': "hello" })
+    #     timer.start()
+
+    #     return render(request, 'pdftojpg.html', {'url': str(res)})
+        
+    return render(request, 'bgremover.html')
+
 
 
 def watermark(request):
