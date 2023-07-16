@@ -15,6 +15,7 @@ from pdf2docx import Converter
 from docx2pdf import convert
 import img2pdf
 from pdf2image import convert_from_path, convert_from_bytes
+import cv2
 
 import pandas as pd
 import string
@@ -22,6 +23,7 @@ import random
 import os
 from zipfile import ZipFile
 import re
+import numpy as np
 
 import time
 from threading import Timer
@@ -155,28 +157,48 @@ def pdfTojpg(request):
 def bgremover(request):
     pythoncom.CoInitialize()
 
-    # if request.method == "POST":
-    #     res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
-    #     path_to_upload = os.path.join('./converters/static/uploaded_files/bgremover', str(res))
-    #     os.makedirs(path_to_upload)
-    #     files = request.FILES
-    #     for file in files.getlist('files'):
-    #         with open(path_to_upload + '/sample.pdf', 'wb+') as f:
-    #             for chunk in file.chunks():
-    #                 f.write(chunk)
+    if request.method == "POST":
+        res = ''.join(random.choice(string.ascii_lowercase) for x in range(10))
+        path_to_upload = os.path.join('./converters/static/uploaded_files/bgremover', str(res))
+        os.makedirs(path_to_upload)
+        files = request.FILES
+        for file in files.getlist('files'):
+            with open(path_to_upload + '/sample.jpg', 'wb+') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
 
-    #     images = convert_from_path(path_to_upload+'/sample.pdf', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
+        # Alternate method
+        # Read the image
+        image = cv2.imread(path_to_upload + '/sample.jpg')
+        # print(path_to_upload + '/sample.jpg')
+        # # Convert image to grayscale
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # # Apply thresholding to create a binary mask
+        _, binary_mask = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+
+        # # Perform morphological operations to improve mask
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+        morphed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_OPEN, kernel, iterations=3)
+
+        # # Apply the mask to the original image
+        result = cv2.bitwise_and(image, image, mask=morphed_mask)
+
+        # Save the result
+        cv2.imwrite(path_to_upload + '/output.jpg', result)
+
+        # images = convert_from_path(path_to_upload+'/sample.jpg', 500, poppler_path = r"C:\Users\hp\Downloads\Release-23.05.0-0\poppler-23.05.0\Library\bin")
         
-    #     for i in range(len(images)):
-    #         images[i].save(path_to_upload+'/sample.jpg', 'JPEG')
+        # for i in range(len(images)):
+        #     images[i].save(path_to_upload+'/sample.jpg', 'JPEG')
 
-    #     os.remove(path_to_upload+'/sample.pdf')
+        # os.remove(path_to_upload+'/sample.jpg')
 
         
-    #     timer = Timer(25, my_function, {path_to_upload+'/sample.jpg': "hello" })
-    #     timer.start()
+        timer = Timer(2500, my_function, {path_to_upload+'/sample.jpg': "hello" })
+        timer.start()
 
-    #     return render(request, 'pdftojpg.html', {'url': str(res)})
+        return render(request, 'bgremover.html', {'url': str(res)})
         
     return render(request, 'bgremover.html')
 
