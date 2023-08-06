@@ -43,7 +43,7 @@ To install and run the project locally, follow these steps:
    - For Windows (PowerShell):
 
      ```bash
-     .\venv\Scripts\Activate.ps1
+     .\venv\Scripts\Activate.bat
      ```
 
 5. Install the project dependencies:
@@ -80,7 +80,7 @@ To install and run the project locally, follow these steps:
 
 The project follows the standard structure of a Django application. Here is a brief overview of the main directories and files:
 
-- **`doccon`**: WSGI application entry point.
+- **`doccon`**: This is main folder.
    - **`doc_conv`**: The Django project management script.
       - **`converters`**: Project settings file.
          - **`static`**: WSGI application entry point.
@@ -88,10 +88,10 @@ The project follows the standard structure of a Django application. Here is a br
          - **`__init__`**: WSGI application entry point.
          - **`admin`**: WSGI application entry point.
          - **`apps`**: WSGI application entry point.
-         - **`models`**: WSGI application entry point.
-         - **`tests`**: WSGI application entry point.
-         - **`urls`**: WSGI application entry point.
-         - **`views`**: WSGI application entry point.
+         - **`models`**: all the models.
+         - **`tests`**: test.
+         - **`urls`**: all defined urls.
+         - **`views`**: all the routes.
         
       - **`doc_conv`**: URL configuration file.
          - **`__pycache__`**: WSGI application entry point.
@@ -120,4 +120,4 @@ When submitting a pull request, ensure that your code follows the project's codi
 
 ## License
 
-This project is licensed under the
+This project is licensed under the MIT licence
