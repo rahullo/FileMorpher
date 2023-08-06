@@ -80,20 +80,35 @@ To install and run the project locally, follow these steps:
 
 The project follows the standard structure of a Django application. Here is a brief overview of the main directories and files:
 
-- **`manage.py`**: The Django project management script.
-- **`FileMopher`**: The Django project directory.
-  - **`FileMopher/settings.py`**: Project settings file.
-  - **`FileMopher/urls.py`**: URL configuration file.
-  - **`FileMopher/wsgi.py`**: WSGI application entry point.
-- **`FileMopher`**: The main Django app directory.
-  - **`migrations`**: Database migration files.
-  - **`static`**: Static files (CSS, JavaScript, etc.).
-  - **`templates`**: HTML templates for the user interface.
-  - **`admin.py`**: Django admin configuration file.
-  - **`models.py`**: Database models for the application.
-  - **`views.py`**: View functions for handling HTTP requests.
-  - **`utils.py`**: Utility functions for document conversion.
-- **`requirements.txt`**: A list of project dependencies.
+- **`doccon`**: WSGI application entry point.
+   - **`doc_conv`**: The Django project management script.
+      - **`converters`**: Project settings file.
+         - **`static`**: WSGI application entry point.
+         - **`templates`**: WSGI application entry point.
+         - **`__init__`**: WSGI application entry point.
+         - **`admin`**: WSGI application entry point.
+         - **`apps`**: WSGI application entry point.
+         - **`models`**: WSGI application entry point.
+         - **`tests`**: WSGI application entry point.
+         - **`urls`**: WSGI application entry point.
+         - **`views`**: WSGI application entry point.
+        
+      - **`doc_conv`**: URL configuration file.
+         - **`__pycache__`**: WSGI application entry point.
+         - **`__init__`**: WSGI application entry point.
+         - **`asgi`**: WSGI application entry point.
+         - **`settings`**: WSGI application entry point.
+         - **`urls`**: WSGI application entry point.
+         - **`wsgi`**: WSGI application entry point.
+        
+      - **`db.sqlite3`**: WSGI application entry point.
+      - **`manage.py`**: WSGI application entry point.
+   - **`include`**: The Django project directory.
+ 
+   - **`lib`**: The main Django app directory.
+   - **`Scripts`**: The main Django app directory.
+   - **`pyvenv`**: The main Django app directory.
+ 
 
 Feel free to explore the project structure and modify the code as per your requirements.
 
