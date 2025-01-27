@@ -116,6 +116,8 @@ Feel free to explore the project structure and modify the code as per your requi
 
 If you would like to contribute to this project, you are welcome to submit pull requests. Before making changes, please open an issue to discuss the proposed improvements or bug fixes.
 
+#### Please take a moment to appreciate my work. If you like this repo, kindly give it a ⭐ on GitHub.
+
 When submitting a pull request, ensure that your code follows the project's coding conventions and include appropriate tests if necessary.
 
 ## License
